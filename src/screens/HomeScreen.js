@@ -1,37 +1,26 @@
 import React from 'react';
 import { View, Text, Button, StyleSheet } from 'react-native';
-import { useGoogleAuth } from '../services/googleConfig';
 
-const HomeScreen = () => {
-  const { promptAsync, handleLogin } = useGoogleAuth();
-
+export default function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Bem-vindo ao Descubra Sua Cidade!</Text>
-      <Button
-        title="Login com Google"
-        onPress={() => {
-          promptAsync();
-          handleLogin();
-        }}
-      />
+      <Text style={styles.title}>Bem-vindo à Home Screen!</Text>
+      <Button title="Logout" onPress={() => navigation.replace('Login')} />
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    padding: 20,
   },
-  text: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#333',
+  title: {
+    fontSize: 24,
+    marginBottom: 20,
   },
 });
 
-export default HomeScreen;
 
